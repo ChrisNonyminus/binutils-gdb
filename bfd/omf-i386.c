@@ -319,25 +319,25 @@ reloc_howto_type howto_table_i386omf_pcrel[] =
   /*  type                    rs size bsz  pcrel bp  ovrf                        sf
    *  name        part_inpl readmask     setmask pcdone */
 HOWTO(R_I386OMF_LO8,          0,  0,   8,  TRUE,  0, complain_overflow_signed,   0,
-      "PC8LO",    FALSE,       0xff,       0xff,  FALSE), /* XXX Which overflow type? */
+      "R_386_PC8LO",    FALSE,       0xff,       0xff,  FALSE), /* XXX Which overflow type? */
 HOWTO(R_I386OMF_OFF16,        0,  1,  16,  TRUE,  0, complain_overflow_bitfield, 0,
-      "OFFPC16",  FALSE,     0xffff,     0xffff,  FALSE),
+      "R_386_OFFPC16",  FALSE,     0xffff,     0xffff,  FALSE),
 EMPTY_HOWTO(R_I386OMF_SEG), /* PC-relative SEG relocs don't make sense. */
 EMPTY_HOWTO(R_I386OMF_FAR16),
 HOWTO(R_I386OMF_HI8,          0,  0,   8,  TRUE,  0, complain_overflow_dont,     0,
-      "PC8HI",    FALSE,       0xff,       0xff,  FALSE), /* XXX Which overflow type? */
+      "R_386_PC8HI",    FALSE,       0xff,       0xff,  FALSE), /* XXX Which overflow type? */
 HOWTO(R_I386OMF_OFF16_LOADER, 0,  1,  16,  TRUE,  0, complain_overflow_bitfield, 0,
-      "OFFPC16L", FALSE,     0xffff,     0xffff,  FALSE),
+      "R_386_OFFPC16L", FALSE,     0xffff,     0xffff,  FALSE),
 EMPTY_HOWTO(R_I386OMF_RESERVED_6),
 EMPTY_HOWTO(R_I386OMF_RESERVED_7),
 EMPTY_HOWTO(R_I386OMF_RESERVED_8),
 HOWTO(R_I386OMF_OFF32,        0,  2,  32,  TRUE,  0, complain_overflow_bitfield, 0,
-      "OFFPC32",  FALSE, 0xffffffff, 0xffffffff,  FALSE),
+      "R_386_OFFPC32",  FALSE, 0xffffffff, 0xffffffff,  FALSE),
 EMPTY_HOWTO(R_I386OMF_RESERVED_10),
 EMPTY_HOWTO(R_I386OMF_FAR32),
 EMPTY_HOWTO(R_I386OMF_RESERVED_12),
 HOWTO(R_I386OMF_OFF32_LOADER, 0,  2,  32,  TRUE,  0, complain_overflow_bitfield, 0,
-      "OFFPC32L", FALSE, 0xffffffff, 0xffffffff,  FALSE),
+      "R_386_OFFPC32L", FALSE, 0xffffffff, 0xffffffff,  FALSE),
 };
 reloc_howto_type howto_table_i386omf_segrel[] =
 {
