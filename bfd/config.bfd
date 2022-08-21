@@ -609,7 +609,7 @@ case "${targ}" in
     ;;
   *-*-msdosdjgpp* | *-*-go32* )
     targ_defvec=i386_coff_go32_vec
-    targ_selvecs="i386_coff_go32stubbed_vec i386_aout_vec"
+    targ_selvecs="i386_coff_go32stubbed_vec i386_aout_vec i386omf_vec"
     ;;
   i[3-7]86-*-darwin* | i[3-7]86-*-macos10* | i[3-7]86-*-rhapsody*)
     targ_defvec=i386_mach_o_vec
@@ -731,7 +731,7 @@ case "${targ}" in
     ;;
   i[3-7]86-*-msdos*)
     targ_defvec=i386_aout_vec
-    targ_selvecs=i386_msdos_vec
+    targ_selvecs="i386_msdos_vec i386omf_vec"
     ;;
   i[3-7]86-*-moss*)
     targ_defvec=i386_elf32_vec

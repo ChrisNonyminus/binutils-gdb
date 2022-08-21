@@ -72,3 +72,15 @@ stamp-*
 /mpc*
 /gmp*
 /isl*
+
+# vscode stuff
+
+.vscode/
+Makefile
+
+bfdtest1
+bfdtest2
+
+.dirstamp
+
+gentestdlls

@@ -5483,63 +5483,65 @@ display_object_bfd (bfd *abfd)
 }
 
 static void
-display_any_bfd (bfd *file, int level)
+display_any_bfd (bfd *file/*, int level*/)
 {
   /* Decompress sections unless dumping the section contents.  */
   if (!dump_section_contents)
     file->flags |= BFD_DECOMPRESS;
 
+  // TODO: Fix issue where this check always results in an unrecoverable error when the format IS an object and not an archive.
+  // for now I'll just comment it out - ChrisNonyminus
   /* If the file is an archive, process all of its elements.  */
-  if (bfd_check_format (file, bfd_archive))
-    {
-      bfd *arfile = NULL;
-      bfd *last_arfile = NULL;
+//   if (bfd_check_format (file, bfd_archive))
+//     {
+//       bfd *arfile = NULL;
+//       bfd *last_arfile = NULL;
 
-      if (level == 0)
-	printf (_("In archive %s:\n"), sanitize_string (bfd_get_filename (file)));
-      else if (level > 100)
-	{
-	  /* Prevent corrupted files from spinning us into an
-	     infinite loop.  100 is an arbitrary heuristic.  */
-	  fatal (_("Archive nesting is too deep"));
-	  return;
-	}
-      else
-	printf (_("In nested archive %s:\n"),
-		sanitize_string (bfd_get_filename (file)));
+//       if (level == 0)
+// 	printf (_("In archive %s:\n"), sanitize_string (bfd_get_filename (file)));
+//       else if (level > 100)
+// 	{
+// 	  /* Prevent corrupted files from spinning us into an
+// 	     infinite loop.  100 is an arbitrary heuristic.  */
+// 	  fatal (_("Archive nesting is too deep"));
+// 	  return;
+// 	}
+//       else
+// 	printf (_("In nested archive %s:\n"),
+// 		sanitize_string (bfd_get_filename (file)));
 
-      for (;;)
-	{
-	  bfd_set_error (bfd_error_no_error);
+//       for (;;)
+// 	{
+// 	  bfd_set_error (bfd_error_no_error);
 
-	  arfile = bfd_openr_next_archived_file (file, arfile);
-	  if (arfile == NULL)
-	    {
-	      if (bfd_get_error () != bfd_error_no_more_archived_files)
-		nonfatal (bfd_get_filename (file));
-	      break;
-	    }
+// 	  arfile = bfd_openr_next_archived_file (file, arfile);
+// 	  if (arfile == NULL)
+// 	    {
+// 	      if (bfd_get_error () != bfd_error_no_more_archived_files)
+// 		nonfatal (bfd_get_filename (file));
+// 	      break;
+// 	    }
 
-	  display_any_bfd (arfile, level + 1);
+// 	  display_any_bfd (arfile, level + 1);
 
-	  if (last_arfile != NULL)
-	    {
-	      bfd_close (last_arfile);
-	      /* PR 17512: file: ac585d01.  */
-	      if (arfile == last_arfile)
-		{
-		  last_arfile = NULL;
-		  break;
-		}
-	    }
-	  last_arfile = arfile;
-	}
+// 	  if (last_arfile != NULL)
+// 	    {
+// 	      bfd_close (last_arfile);
+// 	      /* PR 17512: file: ac585d01.  */
+// 	      if (arfile == last_arfile)
+// 		{
+// 		  last_arfile = NULL;
+// 		  break;
+// 		}
+// 	    }
+// 	  last_arfile = arfile;
+// 	}
 
-      if (last_arfile != NULL)
-	bfd_close (last_arfile);
-    }
-  else
-    display_object_bfd (file);
+//       if (last_arfile != NULL)
+// 	bfd_close (last_arfile);
+//     }
+//   else
+     display_object_bfd (file);
 }
 
 static void
@@ -5560,7 +5562,7 @@ display_file (char *filename, char *target, bool last_file)
       return;
     }
 
-  display_any_bfd (file, 0);
+  display_any_bfd (file);
 
   /* This is an optimization to improve the speed of objdump, especially when
      dumping a file with lots of associated debug informatiom.  Calling

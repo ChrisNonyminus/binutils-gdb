@@ -164,6 +164,7 @@ DESCRIPTION
 .  bfd_target_os9k_flavour,
 .  bfd_target_versados_flavour,
 .  bfd_target_msdos_flavour,
+.  bfd_target_omf_flavour,
 .  bfd_target_ovax_flavour,
 .  bfd_target_evax_flavour,
 .  bfd_target_mmo_flavour,
@@ -958,6 +959,7 @@ extern const bfd_target core_hppabsd_vec;
 extern const bfd_target core_hpux_vec;
 extern const bfd_target core_irix_vec;
 extern const bfd_target core_netbsd_vec;
+extern const bfd_target i386omf_vec;
 extern const bfd_target core_osf_vec;
 extern const bfd_target core_ptrace_vec;
 extern const bfd_target core_sco5_vec;
@@ -1097,6 +1099,7 @@ static const bfd_target * const _bfd_target_vector[] =
 	&i386_elf32_vxworks_vec,
 	&i386_mach_o_vec,
 	&i386_msdos_vec,
+	&i386omf_vec,
 	&i386_pe_vec,
 	&i386_pe_big_vec,
 	&i386_pei_vec,
@@ -1802,6 +1805,7 @@ bfd_flavour_name (enum bfd_flavour flavour)
     case bfd_target_pef_flavour: return "PEF";
     case bfd_target_pef_xlib_flavour: return "PEF_XLIB";
     case bfd_target_sym_flavour: return "SYM";
+    case bfd_target_omf_flavour: return "OMF";
     /* There is no "default" case here so that -Wswitch (part of -Wall)
        catches missing entries.  */
     }

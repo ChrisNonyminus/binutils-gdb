@@ -78,7 +78,7 @@ BFD32_LIBS = \
 	archive.lo archures.lo bfd.lo bfdio.lo bfdwin.lo cache.lo \
 	coff-bfd.lo compress.lo corefile.lo elf-properties.lo format.lo \
 	hash.lo init.lo libbfd.lo linker.lo merge.lo opncls.lo reloc.lo \
-	section.lo simple.lo stab-syms.lo stabs.lo syms.lo targets.lo \
+	section.lo simple.lo stab-syms.lo stabs.lo strtab.lo syms.lo targets.lo \
 	binary.lo ihex.lo srec.lo tekhex.lo verilog.lo
 
 BFD64_LIBS = archive64.lo
@@ -87,7 +87,7 @@ BFD32_LIBS_CFILES = \
 	archive.c archures.c bfd.c bfdio.c bfdwin.c cache.c coff-bfd.c \
 	compress.c corefile.c elf-properties.c format.c hash.c \
 	init.c libbfd.c linker.c merge.c opncls.c reloc.c \
-	section.c simple.c stab-syms.c stabs.c syms.c targets.c \
+	section.c simple.c stab-syms.c stabs.c strtab.c syms.c targets.c \
 	binary.c ihex.c srec.c tekhex.c verilog.c
 
 BFD64_LIBS_CFILES = archive64.c
@@ -368,6 +368,7 @@ BFD32_BACKENDS = \
 	ns32knetbsd.lo \
 	pc532-mach.lo \
 	pdp11.lo \
+	omf-i386.lo \
 	pe-arm-wince.lo \
 	pe-arm.lo \
 	pe-i386.lo \
@@ -498,6 +499,7 @@ BFD32_BACKENDS_CFILES = \
 	mach-o-i386.c \
 	mach-o-arm.c \
 	ns32knetbsd.c \
+	omf-i386.c
 	pc532-mach.c \
 	pdp11.c \
 	pe-arm-wince.c \
@@ -707,7 +709,7 @@ SOURCE_HFILES = \
 	mach-o.h \
 	netbsd.h ns32k.h \
 	pef.h pef-traceback.h peicode.h plugin.h \
-	som.h sysdep.h \
+	som.h sysdep.h strtab.h \
 	version.h vms.h \
 	wasm-module.h \
 	xcofflink.h xsym.h
